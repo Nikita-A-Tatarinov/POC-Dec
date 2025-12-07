@@ -1,0 +1,19 @@
+# SORGA - Super-relation Ontology-guided Reasoning with Graph-constrained Attention
+# Requirements file
+
+# Core dependencies
+numpy>=1.21.0
+torch>=2.0.0
+transformers>=4.30.0
+
+# Knowledge Graph
+SPARQLWrapper>=2.0.0
+
+# LLM APIs
+openai>=0.27.0
+
+# Data processing
+tqdm>=4.65.0
+
+# Utilities
+pyyaml>=6.0

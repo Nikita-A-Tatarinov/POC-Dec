@@ -1,0 +1,55 @@
+# ReKnoS-Only Configuration
+# Tests super-relation expansion (ReKnoS-style) in isolation
+
+# Inherit base settings
+llm:
+  model_name: "gpt-4o-mini"
+  use_mock: false
+  temperature: 0.0
+  max_tokens: 512
+
+kg:
+  mode: "in_memory"
+  max_subgraph_size: 10000
+  cache_graphs: true
+
+# ReKnoS-only: Only super-relation component enabled
+use_ort: false
+use_reknos: true
+
+sorga:
+  max_hops: 3
+  beam_width: 5
+  use_constrained_decoding: false
+  max_reasoning_time: 300
+  
+  # Component enablement
+  enabled_components:
+    ontology: false
+    super_relation: true
+    kg_trie: false
+    synthesis: true
+
+# ReKnoS-specific settings
+reknos:
+  max_length: 3  # L (number of steps)
+  width: 3       # N (number of paths to maintain)
+  top_k: 5       # K (number of super-relations to select per step)
+
+super_relations:
+  clustering_method: "domain"
+  max_cluster_size: 50
+  min_cluster_size: 1
+
+dataset:
+  name: "webqsp"
+  source: "huggingface"
+  hf_dataset_id:
+    webqsp: "rmanluo/RoG-webqsp"
+  split: "test"
+  limit: null
+
+# Logging settings
+# log_every_n: 1 = log every question (verbose, default)
+# log_every_n: 100 = log every 100th question (recommended for full runs)
+log_every_n: 50  # Change to 100 or higher for less verbose output

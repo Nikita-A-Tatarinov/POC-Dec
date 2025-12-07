@@ -1,0 +1,36 @@
+[project]
+name = "sorga"
+version = "0.1.0"
+description = "SORGA: Super-relation Ontology-guided Reasoning with Graph-constrained Attention"
+authors = [
+    {name = "SORGA Team"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+
+dependencies = [
+    "numpy>=1.21.0",
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "SPARQLWrapper>=2.0.0",
+    "openai>=0.27.0",
+    "tqdm>=4.65.0",
+    "pyyaml>=6.0",
+    "datasets>=2.14.0",
+    "networkx>=3.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+]
